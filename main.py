@@ -30,6 +30,7 @@ def hass_to_bigquery(data, context):
         'attributes': json.dumps(state['attributes']),
         'last_changed': datetime.datetime.fromisoformat(state['last_changed'].replace('"', '')),
         'last_updated': datetime.datetime.fromisoformat(state['last_updated'].replace('"', '')),
+        'last_reported': datetime.datetime.fromisoformat(state['last_reported'].replace('"', '')),
         'context': json.dumps(state['context'])
     }
     res = bigquery_client.insert_rows(table, [dt])
